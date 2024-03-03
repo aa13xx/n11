@@ -6,7 +6,7 @@ C ######################## Define Cells #############################
 C
 1 1 4.925e-5 -1 imp:np=1 $Detector
 5 0 5 imp:np=0 $void outside
-6 0 -5 1 10 20 30 40 imp:np=1 $void inside
+6 0 -5 1 10 20 21 22 23 40 imp:np=1 $void inside
 10 2 -0.99 -10 imp:np=1 $watertank
 20 3 -2.2505 -20 imp:np=1 $concrete wall
 21 3 -2.2505 -21 imp:np=1 $concrete wall2
@@ -20,7 +20,7 @@ C
 C ######################## Define Surfaces ##########################
 C
 1 RCC 0 34 -50 0 0 100 2.5 $Detector cylinder
-5 sx 40 180 $world sphere
+5 sx 40 500 $world sphere
 10 RPP 69 195 0 64 -38 38 $watertank
 20 RPP -119 -69 0 250 -100 100 $Concrete wall
 21 RPP -119 195 0 250 100 150 $Concrete wall2
