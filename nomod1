@@ -1,4 +1,4 @@
-C No moderator with thick concrete walls
+C No moderator with thick concrete walls + workstations
 C
 C
 C
@@ -26,19 +26,27 @@ C
 21 RPP -119 195 0 250 100 150 $Concrete wall2
 22 RPP -119 195 -70 0 -150 150 $Concrete floor
 23 RPP -119 195 250 300 -150 150 $Concrete ceiling
-30 RPP -69 100 0 100 -100 -101 $workstation
+30 RPP -69 100 0 100 -101 -100 $workstation
 40 RPP 65 65.1 0 100 -50 50 $Cd plate
 C 100 RPP 52 64 0 100 -50 50 $moderator
 
 mode n p
 C
 C ######################## Define Source #############################
-C Source AM/Be energy definition. Point source. Isotropic.
-sdef pos=84.1 32 0 erg=d1
+C Source AM/Be energy definition. Cylindrical Source. Isotropic.
+C sdef pos=84.1 32 0 erg=d1
+sdef  pos=0 32 0  erg=d1  rad=d2  axis= 1 0 0  ext=d3
+C Am/Be Source Energy Definition
 si1 h 0 0.5 1 1.5 2 2.5 3 3.5 4 4.5 5 5.5 6 6.5 7 7.5 8 8.5
      9 9.5 10 10.5 11 11.5 12
 sp1 d 0 0.15 0.08 0.09 0.06 0.100 0.15 0.107 0.101 0.11 0.102 0.15
      0.07 0.12 0.05 0.08 0.10 0.05 0.02 0.03 0.04 0.02 0 0 0
+C
+si2 0 2.5 $cylinderradius 
+sp2 -21 1
+C
+si3 84 94 $cylinderlength
+sp3 -21 0
 C
 C ######################## Define Tallies ############################
 C
