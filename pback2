@@ -1,0 +1,82 @@
+C Polythene behind- 2cm
+C
+C
+C
+C ######################## Define Cells #############################
+C
+1 1 4.925e-5 -1 imp:np=1 $Detector
+5 0 5 imp:np=0 $void outside
+6 0 -5 1 10 20 30 40 100 imp:np=1 $void inside
+10 2 -0.99 -10 imp:np=1 $watertank
+20 3 -2.2505 -20 imp:np=1 $concrete wall
+30 3 -2.2505 -30 imp:np=1 $concrete floor
+40 4 -8.65 -40 imp:np=1 $Cd plate
+100 5 -1.08 -100 imp:np=1 $moderator plate
+
+C
+C ######################## Define Surfaces ##########################
+C
+1 RCC 0 34 -50 0 0 100 2.5 $Detector cylinder
+5 sx 40 180 $worldsphere
+10 RPP 69 195 0 64 -38 38 $watertank
+20 RPP -100 -69 0 100 -50 50 $Concrete wall
+30 RPP -100 195 -30 0 -50 50 $Concrete floor
+40 RPP 65 65.1 0 100 -50 50 $Cd plate
+100 RPP -65 -63 0 100 -50 50 $moderator
+
+mode n p
+C
+C ######################## Define Source #############################
+C Source AM/Be energy definition. Point source. Isotropic.
+sdef pos=84.1 32 0 erg=d1
+si1 h 0 0.5 1 1.5 2 2.5 3 3.5 4 4.5 5 5.5 6 6.5 7 7.5 8 8.5
+     9 9.5 10 10.5 11 11.5 12
+sp1 d 0 0.15 0.08 0.09 0.06 0.100 0.15 0.107 0.101 0.11 0.102 0.15
+     0.07 0.12 0.05 0.08 0.10 0.05 0.02 0.03 0.04 0.02 0 0 0
+C
+C ######################## Define Tallies ############################
+C
+f14:n 1 $Tally neutrons in cell 1
+e14 0.5e-6 1 5 10
+C
+C Interaction in detector
+C
+f24:n 1 $Tally neutrons in cell 1
+e24 0.5e-6 1 5 10
+fm24 -1 1 103 $simulate (n,p) interaction
+C
+C Gamma
+C
+f34:p 1
+e34 0 999i 10
+C
+C ######################## Define Materials ##########################
+C
+m1 2003.60C 1 $He-3
+m2 1001.60C 1 
+     8016.60C 2 $water
+m3 1001.60C 8.47636e-2
+     8016.60C 6.04086e-1
+     11023.60C 9.47250e-3
+     12000.60C 2.99826e-3
+     13027.60C 2.48344e-2
+     14000.60C 2.41860e-1
+     19000.60C 6.85513e-3
+     20000.60C 2.04808e-2
+     26054.60C 2.74322e-4
+     26056.60C 4.26455e-3
+     26057.60C 9.76401e-5
+     26058.60C 1.30187e-5 $concrete
+m4 48000.50C 1 $cadmium
+C m5 1001.60C 6.82927e-2
+C 1002.60C 2.73007e-5
+C 5010.60C 9.07404e-3
+C 5011.60C 4.09259e-2
+C 6000.60C 8.13360e-1 $Borated Polythene
+m5 6000.60C 1 1001.60C 2 $Polythene
+mt5 poly.01t $thermal treatment card
+mt2 lwtr.01t $water treatment card 
+C
+C ######################## Define Run Time ###########################
+C
+nps 10000000
