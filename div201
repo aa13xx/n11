@@ -1,4 +1,4 @@
-C Collimated Source Beam divergence - 70cm - No moderator
+C Collimated Source Beam divergence - 60cm - No moderator
 C
 C
 C
@@ -21,7 +21,7 @@ C
 2 RCC 0 44 -50 0 0 100 2.5 $Detector cylinder
 3 RCC 0 24 -50 0 0 100 2.5 $Detector cylinder
 5 sx 40 180 $world sphere
-7 px 70 $source plane
+7 px 20 $source plane
 20 RPP -100 -69 0 100 -50 50 $Concrete wall
 30 RPP -100 195 -30 0 -50 50 $Concrete floor
 C 100 RPP 52 64 0 100 -50 50 $moderator
@@ -30,7 +30,7 @@ mode n p
 C
 C ######################## Define Source #############################
 C Source AM/Be energy definition. Collimated source. Isotropic.
-sdef surf=7 pos=70 34 0 rad=d1 dir=-1 erg=d2
+sdef surf=7 pos=20 34 0 rad=d1 dir=-1 erg=d2
 C radius 0.25cm
 si1 0.25
 C Am/Be Source Energy Definition
