@@ -55,14 +55,14 @@ f34:p 1 $gamma in cell 1
 e34 0 999i 10
 C
 f44:n 2 $neutrons in cell 2
-e14 0.5e-6 1 5 10
+e44 0.5e-6 1 5 10
 C
 f54:n 2 $neutrons in cell 2 
-e24 0.5e-6 1 5 10
+e54 0.5e-6 1 5 10
 fm24 -1 1 103 $simulate (n,p) interaction
 C
 f64:p 2 $gamma in cell 2
-e34 0 999i 10
+e64 0 999i 10
 C
 C ######################## Define Materials ##########################
 C
