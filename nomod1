@@ -45,7 +45,7 @@ C
 si2 0 2.5 $cylinderradius 
 sp2 -21 1
 C
-si3 84 94 $cylinderlength
+si3 69 79 $cylinderlength
 sp3 -21 0
 C
 C ######################## Define Tallies ############################
