@@ -1,4 +1,4 @@
-C Collimated Source Beam divergence - 50cm - No moderator
+C collominated beams with borated polythene moderator and 70cm away
 C
 C
 C
@@ -8,11 +8,10 @@ C
 2 1 4.925e-5 -2 imp:np=1 $Detector
 3 1 4.925e-5 -3 imp:np=1 $Detector
 5 0 5 imp:np=0 $void outside
-6 0 -5 1 2 3 20 30 imp:np=1 $void inside
-20 2 -2.2505 -20 imp:np=1 $concrete wall
-30 2 -2.2505 -30 imp:np=1 $concrete floor
-C 100 5 -1.08 -100 imp:np=1 $moderator plate
-C 100 6 -11.35 -100 imp:np=1 $lead shield plate
+6 0 -5 1 2 3 20 30 40 100 imp:np=1 $void inside
+20 3 -2.2505 -20 imp:np=1 $concrete wall
+30 3 -2.2505 -30 imp:np=1 $concrete floor
+100 5 -1.08 -100 imp:np=1 $moderator plate
 
 C
 C ######################## Define Surfaces ##########################
@@ -20,17 +19,17 @@ C
 1 RCC 0 34 -50 0 0 100 2.5 $Detector cylinder
 2 RCC 0 44 -50 0 0 100 2.5 $Detector cylinder
 3 RCC 0 24 -50 0 0 100 2.5 $Detector cylinder
-5 sx 40 180 $world sphere
-7 px 50 $source plane
+5 s 40 100 0 290 $worldsphere
+7 px 70 $source plane
 20 RPP -100 -69 0 100 -50 50 $Concrete wall
 30 RPP -100 195 -30 0 -50 50 $Concrete floor
-C 100 RPP 52 64 0 100 -50 50 $moderator
+100 RPP 63 64 0 100 -50 50 $moderator
 
 mode n p
 C
 C ######################## Define Source #############################
 C Source AM/Be energy definition. Collimated source. Isotropic.
-sdef surf=7 pos=50 34 0 rad=d1 dir=-1 erg=d2
+sdef surf=7 pos=70 34 0 rad=d1 dir=-1 erg=d2
 C radius 0.25cm
 si1 0.25
 C Am/Be Source Energy Definition
@@ -76,7 +75,9 @@ C
 C ######################## Define Materials ##########################
 C
 m1 2003.60C 1 $He-3
-m2 1001.60C 8.47636e-2
+m2 1001.60C 1 
+     8016.60C 2 $water
+m3 1001.60C 8.47636e-2
      8016.60C 6.04086e-1
      11023.60C 9.47250e-3
      12000.60C 2.99826e-3
@@ -88,15 +89,14 @@ m2 1001.60C 8.47636e-2
      26056.60C 4.26455e-3
      26057.60C 9.76401e-5
      26058.60C 1.30187e-5 $concrete
-C m4 48000.50C 1 $cadmium
-C m5 1001.60C 6.82927e-2
-C 1002.60C 2.73007e-5
-C 5010.60C 9.07404e-3
-C 5011.60C 4.09259e-2
-C 6000.60C 8.13360e-1 $Borated Polythene
+m4 48000.50C 1 $cadmium
+m5 1001.60C 6.82927e-2
+     1002.60C 2.73007e-5
+     5010.60C 9.07404e-3
+     5011.60C 4.09259e-2
+     6000.60C 8.13360e-1 $Borated Polythene
 C m5 6000.60C 1 1001.60C 2 $Polythene
-C m6 82000.50C 1 $Lead
-C mt5 poly.01t $thermal treatment card 
+mt5 poly.01t $thermal treatment card 
 C
 C ######################## Define Run Time ###########################
 C
