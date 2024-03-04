@@ -1,4 +1,4 @@
-C No moderator with thick concrete walls + workstations + Collimated Source
+C No moderator + Collimated Source
 C
 C
 C
@@ -7,37 +7,30 @@ C
 1 1 4.925e-5 -1 imp:np=1 $Detector
 2 2 4.925e-5 -1 imp:np=1 $Detector
 5 0 5 imp:np=0 $void outside
-6 0 -5 1 2 10 20 21 22 23 30 40 imp:np=1 $void inside
+6 0 -5 1 2 10 20 30 40 imp:np=1 $void inside
 10 2 -0.99 -10 imp:np=1 $watertank
 20 3 -2.2505 -20 imp:np=1 $concrete wall
-21 3 -2.2505 -21 imp:np=1 $concrete wall2
-22 3 -2.2505 -22 imp:np=1 $concrete floor
-23 3 -2.2505 -23 imp:np=1 $Concrete ceiling
-30 5 -1.08 -30 imp:np=1 $workstation
+30 3 -2.2505 -30 imp:np=1 $concrete floor
 40 4 -8.65 -40 imp:np=1 $Cd plate
-C 100 6 -1.08 -100 imp:np=1 $moderator plate
+C 100 5 -1.08 -100 imp:np=1 $moderator plate
 
 C
 C ######################## Define Surfaces ##########################
 C
 1 RCC 0 34 -50 0 0 100 2.5 $Detector cylinder
 2 RCC 0 40 -50 0 0 100 2.5 $Detector cylinder
-5 s 40 100 0 290 $world sphere
+5 sx 40 180 $world sphere
 10 RPP 69 195 0 64 -38 38 $watertank
-20 RPP -119 -69 0 250 -100 100 $Concrete wall
-21 RPP -119 195 0 250 100 150 $Concrete wall2
-22 RPP -119 195 -70 0 -150 150 $Concrete floor
-23 RPP -119 195 250 300 -150 150 $Concrete ceiling
-30 RPP -69 100 0 100 -101 -100 $workstation
+20 RPP -100 -69 0 100 -50 50 $Concrete wall
+30 RPP -100 195 -30 0 -50 50 $Concrete floor
 40 RPP 65 65.1 0 100 -50 50 $Cd plate
 C 100 RPP 52 64 0 100 -50 50 $moderator
 
 mode n p
 C
 C ######################## Define Source #############################
-C Source AM/Be energy definition. Collimated Source. Isotropic.
-C sdef pos=84.1 32 0 erg=d1
-sdef  pos=0 32 0  erg=d1  rad=d2  axs=1 0 0 ext=0 par=1 dir=1 vec=1 0 0
+C Source AM/Be energy definition. Collimated source. Isotropic.
+sdef  pos=70 32 0  erg=d1  rad=d2  axs=1 0 0 ext=0 par=1 dir=-1 vec=1 0 0
 C Am/Be Source Energy Definition
 si1 h 0 0.5 1 1.5 2 2.5 3 3.5 4 4.5 5 5.5 6 6.5 7 7.5 8 8.5
      9 9.5 10 10.5 11 11.5 12
@@ -47,13 +40,14 @@ C
 si2 0 0.25 $cylinderradius 
 sp2 -21 1
 C
-C
 C ######################## Define Tallies ############################
 C
 f14:n 1 $neutrons in cell 1
 e14 0.5e-6 1 5 10
 C
-f24:n 1 $neutrons in cell 1 
+C Interaction in detector
+C
+f24:n 1 $neutrons in cell 1
 e24 0.5e-6 1 5 10
 fm24 -1 1 103 $simulate (n,p) interaction
 C
@@ -88,16 +82,15 @@ m3 1001.60C 8.47636e-2
      26057.60C 9.76401e-5
      26058.60C 1.30187e-5 $concrete
 m4 48000.50C 1 $cadmium
-m5 1001.60C 6.82927e-2
-     1002.60C 2.73007e-5
-     5010.60C 9.07404e-3
-     5011.60C 4.09259e-2
-     6000.60C 8.13360e-1 $Borated Polythene
-C m6 6000.60C 1 1001.60C 2 $Polythene
-mt5 poly.01t $thermal treatment card
-C mt6 poly.01t $thermal treatment card
+C m5 1001.60C 6.82927e-2
+C 1002.60C 2.73007e-5
+C 5010.60C 9.07404e-3
+C 5011.60C 4.09259e-2
+C 6000.60C 8.13360e-1 $Borated Polythene
+C m5 6000.60C 1 1001.60C 2 $Polythene
+C mt5 poly.01t $thermal treatment card
 mt2 lwtr.01t $water treatment card 
 C
 C ######################## Define Run Time ###########################
 C
-nps 500000
+nps 10000000
