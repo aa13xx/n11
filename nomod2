@@ -30,15 +30,15 @@ mode n p
 C
 C ######################## Define Source #############################
 C Source AM/Be energy definition. Collimated source. Isotropic.
-sdef  pos=70 32 0  erg=d1  rad=d2  axs=1 0 0 ext=0 par=1 dir=-1 vec=1 0 0
+sdef surf=m pos=70 32 0 rad=d1 dir=-1 erg=d2
+C radius 0.25cm
+si1 0.25
 C Am/Be Source Energy Definition
-si1 h 0 0.5 1 1.5 2 2.5 3 3.5 4 4.5 5 5.5 6 6.5 7 7.5 8 8.5
+si2 h 0 0.5 1 1.5 2 2.5 3 3.5 4 4.5 5 5.5 6 6.5 7 7.5 8 8.5
      9 9.5 10 10.5 11 11.5 12
-sp1 d 0 0.15 0.08 0.09 0.06 0.100 0.15 0.107 0.101 0.11 0.102 0.15
+sp2 d 0 0.15 0.08 0.09 0.06 0.100 0.15 0.107 0.101 0.11 0.102 0.15
      0.07 0.12 0.05 0.08 0.10 0.05 0.02 0.03 0.04 0.02 0 0 0
-C
-si2 0 0.25 $cylinderradius 
-sp2 -21 1
+
 C
 C ######################## Define Tallies ############################
 C
