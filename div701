@@ -1,20 +1,18 @@
-C No moderator Collimated Source Beam divergence - 70cm
+C Collimated Source Beam divergence - 70cm - No moderator
 C
 C
 C
 C ######################## Define Cells #############################
 C
 1 1 4.925e-5 -1 imp:np=1 $Detector
-2 2 4.925e-5 -1 imp:np=1 $Detector
-3 3 4.925e-5 -1 imp:np=1 $Detector
+2 1 4.925e-5 -2 imp:np=1 $Detector
+3 1 4.925e-5 -3 imp:np=1 $Detector
 5 0 5 imp:np=0 $void outside
-6 0 -5 1 2 3 10 20 30 40 imp:np=1 $void inside
-C 10 2 -0.99 -10 imp:np=1 $watertank
-20 3 -2.2505 -20 imp:np=1 $concrete wall
-30 3 -2.2505 -30 imp:np=1 $concrete floor
-C 40 4 -8.65 -40 imp:np=1 $Cd plate
+6 0 -5 1 2 3 20 30 imp:np=1 $void inside
+20 2 -2.2505 -20 imp:np=1 $concrete wall
+30 2 -2.2505 -30 imp:np=1 $concrete floor
 C 100 5 -1.08 -100 imp:np=1 $moderator plate
-
+C 100 6 -11.35 -100 imp:np=1 $lead shield plate
 C
 C ######################## Define Surfaces ##########################
 C
@@ -23,10 +21,8 @@ C
 3 RCC 0 24 -50 0 0 100 2.5 $Detector cylinder
 5 sx 40 180 $world sphere
 7 px 70 $source plane
-C 10 RPP 69 195 0 64 -38 38 $watertank
 20 RPP -100 -69 0 100 -50 50 $Concrete wall
 30 RPP -100 195 -30 0 -50 50 $Concrete floor
-C 40 RPP 65 65.1 0 100 -50 50 $Cd plate
 C 100 RPP 52 64 0 100 -50 50 $moderator
 
 mode n p
@@ -66,12 +62,20 @@ C
 f64:p 2 $gamma in cell 2
 e64 0 999i 10
 C
+f74:n 3 $neutrons in cell 3
+e74 0.5e-6 1 5 10
+C
+f84:n 3 $neutrons in cell 3 
+e84 0.5e-6 1 5 10
+fm84 -1 1 103 $simulate (n,p) interaction
+C
+f94:p 3 $gamma in cell 3
+e94 0 999i 10
+C
 C ######################## Define Materials ##########################
 C
 m1 2003.60C 1 $He-3
-m2 1001.60C 1 
-     8016.60C 2 $water
-m3 1001.60C 8.47636e-2
+m2 1001.60C 8.47636e-2
      8016.60C 6.04086e-1
      11023.60C 9.47250e-3
      12000.60C 2.99826e-3
@@ -90,8 +94,8 @@ C 5010.60C 9.07404e-3
 C 5011.60C 4.09259e-2
 C 6000.60C 8.13360e-1 $Borated Polythene
 C m5 6000.60C 1 1001.60C 2 $Polythene
-C mt5 poly.01t $thermal treatment card
-mt2 lwtr.01t $water treatment card 
+C m6 82000.50C 1 $Lead
+C mt5 poly.01t $thermal treatment card 
 C
 C ######################## Define Run Time ###########################
 C
