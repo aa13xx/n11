@@ -23,7 +23,7 @@ C
 7 px 70 $source plane
 20 RPP -100 -69 0 100 -50 50 $Concrete wall
 30 RPP -100 195 -30 0 -50 50 $Concrete floor
-100 RPP 63 64 0 100 -50 50 $moderator
+100 RPP 63 68 0 100 -50 50 $moderator
 
 mode n p
 C
