@@ -1,4 +1,4 @@
-C Collimated Source Beam divergence - 20cm - No moderator
+C no moderator, collimated source x=20cm
 C
 C
 C
@@ -100,4 +100,4 @@ C mt5 poly.01t $thermal treatment card
 C
 C ######################## Define Run Time ###########################
 C
-nps 10000000
+nps 1000000
