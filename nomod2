@@ -8,7 +8,7 @@ C
 2 2 4.925e-5 -1 imp:np=1 $Detector
 3 3 4.925e-5 -1 imp:np=1 $Detector
 5 0 5 imp:np=0 $void outside
-6 0 -5 1 2 3 10 20 30 40 imp:np=1 $void inside
+6 0 -5 1 2 3 20 30 imp:np=1 $void inside
 C 10 2 -0.99 -10 imp:np=1 $watertank
 20 3 -2.2505 -20 imp:np=1 $concrete wall
 30 3 -2.2505 -30 imp:np=1 $concrete floor
